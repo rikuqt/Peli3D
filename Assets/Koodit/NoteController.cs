@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.Characters.FirstPerson;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NoteController : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class NoteController : MonoBehaviour
     [Space(10)]
     [SerializeField] private UnityEvent openEvent;
     private bool isOpen = false;
-
+    [SerializeField] public GameObject kirje4;
     [SerializeField] private KeyCode closeKey = KeyCode.Escape;
 
     public void ShowNote()
@@ -43,6 +44,15 @@ public class NoteController : MonoBehaviour
     void DisablePlayer(bool disable)
     {
         player.enabled = !disable;
+    }
+
+    public void viimeinenKirjeKlikkaus(){
+        //GetComponent<>
+        if (kirje4)
+        {
+            SceneManager.LoadScene("loppuScene");
+        }
+
     }
 
     private void Update()

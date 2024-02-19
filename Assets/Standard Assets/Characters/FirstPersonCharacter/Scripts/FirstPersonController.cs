@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -24,13 +25,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private CurveControlledBob m_HeadBob = new CurveControlledBob();
         [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
         [SerializeField] private float m_StepInterval;
-        [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
-        [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
-        [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField] private AudioClip[] m_FootstepSounds;    
+        [SerializeField] private AudioClip m_JumpSound;           
+        [SerializeField] private AudioClip m_LandSound;           
 
         private Camera m_Camera;
         private bool m_Jump;
-        private float m_YRotation;
         private Vector2 m_Input;
         private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
@@ -54,13 +54,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+            m_MouseLook.Init(transform , m_Camera.transform);
+
+            // Lock cursor
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
 
         // Update is called once per frame
         private void Update()
-        {
+        {  
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -90,7 +94,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource.Play();
             m_NextStep = m_StepCycle + .5f;
         }
-
 
         private void FixedUpdate()
         {

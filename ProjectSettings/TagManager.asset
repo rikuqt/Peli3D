@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - kirje
+  - vesi
+  - talo
+  - audio
   layers:
   - Default
   - TransparentFX
