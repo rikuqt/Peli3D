@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/loppuScene.unity
-    guid: 3b710f4eef57a2d45a98dbc16a316177
-  - enabled: 1
     path: Assets/Scenes/kuolemaScene.unity
     guid: 6c0aba6acad11464080b3184d6eee1b8
+  - enabled: 1
+    path: Assets/Scenes/loppuScene.unity
+    guid: 3b710f4eef57a2d45a98dbc16a316177
   m_configObjects: {}
